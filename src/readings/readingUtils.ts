@@ -76,6 +76,9 @@ export function isReadingPastStaleTime(reading: ReadingDatum): boolean {
   const now = Date.now();
   const { timeInMilliseconds = now } = extractDate(reading) || {};
   const staleTimeInMilliseconds = timeInMilliseconds + 5 * 60 * 1000;
-  console.debug({ staleTimeInMilliseconds });
-  return staleTimeInMilliseconds < 0;
+  console.debug({
+    staleTimeInMilliseconds,
+    staleTime: new Date(staleTimeInMilliseconds),
+  });
+  return staleTimeInMilliseconds < now;
 }
