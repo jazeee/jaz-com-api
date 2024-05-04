@@ -34,23 +34,13 @@ JazComAPI listening on port 4242
 
 ## Run in development
 
-- `npm run dev`
+- `npm run build:watch` in one shell
+- `npm run dev` in a second shell
 
 ## Build
 
-- `npm run build` or  `npm run build:watch`
+- `npm run build`
 
-## Running
+## Run
 
-Once built
-
-- `npm start` or `node dist/main.js`
-
-## Creating an alias
-
-You can run this build using an alias like:
-
-```
-alias your-app-name='node ~/path-to-code/dist/main.js'
-your-app-name
-```
+- `npm start`
