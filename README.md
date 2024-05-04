@@ -5,7 +5,7 @@ This API expects an `accountName` and `password`. You enter this when you start 
 
 ## Example
 
-```
+```bash
 $ npm run dev
 
 > jaz-com-api@1.0.0 dev
@@ -23,7 +23,7 @@ JazComAPI listening on port 4242
 
 ## Test using curl
 
-```
+```bash
 > curl http://localhost:4242/readings
 {"readings":[{"timeInMilliseconds":1714864388000,"timeInSeconds":1714864388,"timeSinceLastReadingInSeconds":274.5160000324249,"timeSinceLastReadingInMinutes":4.5752666672070825,"readingIsOld":false,"date":"2024-05-04T23:13:08.000Z","value":92,"trend":"Flat","color":"green","isHigh":false,"isLow":false,"isInRange":true}]}
 ```
