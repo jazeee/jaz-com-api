@@ -23,14 +23,11 @@ export interface ReadingDatum {
 let lastReadings: ReadingDatum[];
 
 export async function getReadings(authToken: string) {
-  const currentTimeInMinutes = Date.now() / 60_000;
   if (
     !isDefined(lastReadings?.[0]) ||
     isReadingPastStaleTime(lastReadings[0])
   ) {
-    console.log(
-      `Requesting new readings at ${new Date(currentTimeInMinutes).toISOString()}`,
-    );
+    console.log(`Requesting new readings at ${new Date().toISOString()}`);
     const dataEndpointProps = DX_2_ENDPOINT_PROPS.data;
     const { method, headers, querySchema } = dataEndpointProps;
     const searchParams = new URLSearchParams(
