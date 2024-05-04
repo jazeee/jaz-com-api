@@ -1,14 +1,14 @@
 import { DX_2_ENDPOINT_PROPS } from './endpoints';
 import { isDefined } from '../utils';
+import { Credentials } from '../credentials/type';
 
-const accountName: string = process.env.accountName || '';
-const password: string = process.env.password || '';
 const DELTA_TIME_IN_MINUTES = 45;
 
 let lastAuthToken: string;
 let lastAuthenticationTimeInMinutes: number;
 
-export async function getAuthToken() {
+export async function getAuthToken(credentials: Credentials) {
+  const { accountName } = credentials;
   const currentTimeInMinutes = Date.now() / 60_000;
   if (
     !isDefined(lastAuthToken) ||
@@ -21,8 +21,7 @@ export async function getAuthToken() {
     const { method, headers, bodyBase, bodySchema } = authEndpointProps;
     const body = bodySchema.parse({
       ...bodyBase,
-      accountName,
-      password,
+      ...credentials,
     });
 
     const authResponse = await fetch(authEndpointProps.url, {

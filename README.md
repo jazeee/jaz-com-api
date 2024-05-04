@@ -1,10 +1,15 @@
 # JazCom API
 
 JazCom API
+This API expects an `accountName` and `password`. You enter this when you start the API.
 
 ## Setup
 
 - `npm install`
+
+## Run in development
+
+- `npm run dev`
 
 ## Build
 
