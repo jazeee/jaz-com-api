@@ -29,6 +29,11 @@ export async function getAuthToken(credentials: Credentials) {
       headers,
       body: JSON.stringify(body),
     });
+    if (authResponse.status !== 200) {
+      throw new Error(
+        `Failed to get successful API response: ${authResponse.status}`,
+      );
+    }
     lastAuthToken = await authResponse.json();
     lastAuthenticationTimeInMinutes = currentTimeInMinutes;
     if (lastAuthToken.startsWith('0000000')) {

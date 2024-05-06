@@ -45,6 +45,11 @@ export async function getReadings(authToken: string) {
         headers,
       },
     );
+    if (readingsResponse.status !== 200) {
+      throw new Error(
+        `Failed to get successful API response: ${readingsResponse.status}`,
+      );
+    }
     lastReadings = await readingsResponse.json();
     if (lastReadings.length === 0) {
       throw new Error(`Failed to get readings`);
